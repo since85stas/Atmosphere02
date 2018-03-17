@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.batura.stas.atmosphere.MainActivity"
+    android:background="@color/colorPrimary"
     android:orientation="vertical">
 
     <TextView
@@ -11,14 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="8dp"
-        android:text="Calculate"
-        android:textSize="20sp" />
+        android:text="@string/calculate"
+        android:textSize="20sp"
+        android:padding="8dp"/>
     <TextView
         android:id="@+id/description_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Description"
+        android:text="@string/Description"
         android:textSize="20sp"
         android:gravity="center"
         android:padding="8dp"
