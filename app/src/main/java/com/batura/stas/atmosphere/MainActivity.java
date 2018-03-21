@@ -12,6 +12,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //open main activity
+
+        Atmosphere atm = new Atmosphere();
+        //double cpTest = atm.findCp(300);
         TextView calculateTextView = (TextView) findViewById(R.id.calculate_text);
         calculateTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -19,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
                 setContentView(R.layout.calculate_activity);
             }
         });
+        //Atmosphere atm = new Atmosphere();
+        //atm.findCp(300);
     }
 }
 
