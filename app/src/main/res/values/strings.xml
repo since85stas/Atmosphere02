@@ -2,4 +2,5 @@
     <string name="app_name">Atmosphere</string>
     <string name="calculate">Calculate</string>
     <string name="Description">Description</string>
+    <string name="calcAltActivName">enter altitude</string>
 </resources>

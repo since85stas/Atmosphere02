@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         //open main activity
 
         Atmosphere atm = new Atmosphere();
-        //double cpTest = atm.findCp(300);
+        double cpTest = atm.findEnthalpy(300);
         TextView calculateTextView = (TextView) findViewById(R.id.calculate_text);
         calculateTextView.setOnClickListener(new View.OnClickListener() {
             @Override

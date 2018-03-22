@@ -7,10 +7,34 @@
     android:orientation="vertical"
     tools:context="com.batura.stas.atmosphere.CalculateActivity">
 
-    <Button
-        android:id="@+id/button"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button"
-        />
+        android:text="@string/calcAltActivName"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:textSize="28sp"
+        android:padding="16dp"
+        android:fontFamily="sans-serif"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Altitude"
+            android:textSize="28sp"
+            android:padding="16dp"/>
+
+        <EditText
+            android:id="@+id/altitudeInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:textSize="28sp"
+            android:hint="Enter altitude, Km"
+            android:inputType="number" />
+    </LinearLayout>
 </LinearLayout>
