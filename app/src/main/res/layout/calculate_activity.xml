@@ -10,53 +10,136 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/calcAltActivName"
+        android:text="@string/calcAltitudeActivName01"
         android:gravity="center"
         android:textAllCaps="true"
-        android:textSize="28sp"
+        android:textSize="24sp"
         android:padding="16dp"
         android:fontFamily="sans-serif"/>
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/altitudeTextView"
-        android:textSize="28sp"
-        android:padding="16dp"/>
 
-    <EditText
-        android:id="@+id/altitudeInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
-        android:textSize="28sp"
-        android:hint="@string/altitudeHint"
-        android:inputType="number" />
-    </LinearLayout>
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false">
+
+            <TextView
+                android:text="@string/altitudeTextView"
+                style="@style/input_basic_style" />
+            <EditText
+                android:id="@+id/altitudeValue"
+                android:hint="@string/altitudeHint"
+                style="@style/input_basic_style"/>
+            <ImageButton
+                android:id="@+id/altitudeHelp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dip" />
+        </LinearLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false">
+
+            <TextView
+                android:text="@string/machTextView"
+                style="@style/input_basic_style" />
+            <EditText
+                android:id="@+id/machValue"
+                android:hint="@string/altitudeHint"
+                style="@style/input_basic_style"/>
+            <ImageButton
+                android:id="@+id/machHelp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dip" />
+        </LinearLayout>
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:text="@string/calcAltitudeActivName02"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:textSize="24sp"
+        android:padding="16dp"
+        android:fontFamily="sans-serif"/>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="@string/pressureTextView"
-            android:textSize="28sp"
-            android:padding="16dp"/>
+            style="@style/output_basic_style" />
         <TextView
-            android:id="@+id/pressureOut"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/pressureValue"
+            android:hint="@string/resultHint"
+            style="@style/output_basic_style"/>
+        <ImageButton
+            android:id="@+id/pressureHelp"
+            android:layout_width="0dp"
             android:layout_weight="1"
-            android:ems="10"
-            android:textSize="28sp"
-            android:hint="@string/plainText"
-            android:inputType="number" />
+            android:layout_height="48dip" />
     </LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+        <TextView
+            android:text="@string/temperatureTextView"
+            style="@style/output_basic_style" />
+        <TextView
+            android:id="@+id/temperatureValue"
+            android:hint="@string/resultHint"
+            style="@style/output_basic_style"/>
+        <ImageButton
+            android:id="@+id/temperatureHelp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="48dip" />
+    </LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+        <TextView
+            android:text="@string/densityTextView"
+            style="@style/output_basic_style" />
+        <TextView
+            android:id="@+id/densityValue"
+            android:hint="@string/resultHint"
+            style="@style/output_basic_style"/>
+        <ImageButton
+            android:id="@+id/densityHelp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="48dip" />
+    </LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+        <TextView
+            android:text="@string/velocityTextView"
+            style="@style/output_basic_style" />
+        <TextView
+            android:id="@+id/velocityValue"
+            android:hint="@string/resultHint"
+            style="@style/output_basic_style"/>
+        <ImageButton
+            android:id="@+id/velocityHelp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="48dip" />
+    </LinearLayout>
+
+
 
 
 </LinearLayout>

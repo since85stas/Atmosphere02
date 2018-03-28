@@ -2,11 +2,15 @@
     <string name="app_name">Atmosphere</string>
     <string name="calculate">Calculate</string>
     <string name="Description">Description</string>
-    <string name="calcAltActivName">enter altitude</string>
-    <string name="altitudeTextView">Altitude, Km</string>
-    <string name="pressureTextView">Pressure, Pa</string>
-    <string name="temperatureTextView">Temperature, K</string>
+    <string name="calcAltitudeActivName01">Input parameters</string>
+    <string name="calcAltitudeActivName02">Output parameters</string>
+    <string name="altitudeTextView">Altitude</string>
+    <string name="machTextView">Mach number</string>
+    <string name="pressureTextView">Pressure</string>
+    <string name="temperatureTextView">Temperature</string>
     <string name="densityTextView">Density</string>
-    <string name="altitudeHint">Enter altitude</string>
+    <string name="altitudeHint">Enter</string>
+    <string name="resultHint">Result</string>
     <string name="plainText">0</string>
+    <string name="velocityTextView">Velocity</string>
 </resources>
