@@ -1,5 +1,6 @@
 package com.batura.stas.atmosphere;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,13 +15,14 @@ public class MainActivity extends AppCompatActivity {
 
         //open main activity
 
-        Atmosphere atm = new Atmosphere();
-        double cpTest = atm.findEnthalpy(300);
+        //Atmosphere atm = new Atmosphere();
+        //double cpTest = atm.findEnthalpy(300);
         TextView calculateTextView = (TextView) findViewById(R.id.calculate_text);
         calculateTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.calculate_activity);
+                Intent calculateIntent = new Intent(MainActivity.this,CalculateActivity.class);
+                startActivity(calculateIntent);
             }
         });
         //Atmosphere atm = new Atmosphere();

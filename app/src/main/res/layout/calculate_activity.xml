@@ -17,24 +17,46 @@
         android:padding="16dp"
         android:fontFamily="sans-serif"/>
     <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/altitudeTextView"
+        android:textSize="28sp"
+        android:padding="16dp"/>
+
+    <EditText
+        android:id="@+id/altitudeInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:textSize="28sp"
+        android:hint="@string/altitudeHint"
+        android:inputType="number" />
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Altitude"
+            android:text="@string/pressureTextView"
             android:textSize="28sp"
             android:padding="16dp"/>
-
-        <EditText
-            android:id="@+id/altitudeInput"
+        <TextView
+            android:id="@+id/pressureOut"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
             android:textSize="28sp"
-            android:hint="Enter altitude, Km"
+            android:hint="@string/plainText"
             android:inputType="number" />
     </LinearLayout>
+
+
 </LinearLayout>

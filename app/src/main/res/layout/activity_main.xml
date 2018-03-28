@@ -22,7 +22,6 @@
         android:text="@string/Description"
         android:textSize="20sp"
         android:gravity="center"
-        android:padding="8dp"
-        />
+        android:padding="8dp"/>
 
 </LinearLayout>
