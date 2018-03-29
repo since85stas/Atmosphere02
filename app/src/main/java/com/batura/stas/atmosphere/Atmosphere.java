@@ -9,11 +9,11 @@ import  java.lang.Math;
  */
 
 public class Atmosphere  {
-    private double mHeight;
-    private double mMachNumber;
     private double mPressure;
     private double mTempreture;
     private double mDensity;
+    private double mFullPressure;
+    private double mFullTempreture;
     private static final String TAG = "AtmosphereClass";
     private final int nInter = 1000; //
 
@@ -21,9 +21,9 @@ public class Atmosphere  {
     public Atmosphere() {
     }
 
-    public Atmosphere (double height, double machNumber){
-        mHeight = height;
-        mMachNumber = machNumber;
+    public Atmosphere (double height){
+        //mHeight = height;
+        //mMachNumber = machNumber;
         /* Defining parametres of earth atmosphere*/
         final double gravity = 9.807;
         final double airConst = 287;
@@ -103,5 +103,14 @@ public class Atmosphere  {
 
     public double getDensity() {
         return mDensity;
+    }
+
+    public double getFullPressure() {
+        return mFullPressure;
+    }
+
+
+    public double getFullTempreture() {
+        return mFullTempreture;
     }
 }
