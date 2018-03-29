@@ -13,4 +13,5 @@
     <string name="resultHint">Result</string>
     <string name="plainText">0</string>
     <string name="velocityTextView">Velocity</string>
+
 </resources>

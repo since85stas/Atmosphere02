@@ -11,7 +11,7 @@
     <style name="input_basic_style">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:layout_height">48dip</item>
+        <item name="android:layout_height">@dimen/input_item_height</item>
         <item name="android:textSize">24sp</item>
         <item name="android:padding">8dp</item>
     </style>
@@ -19,9 +19,15 @@
     <style name="output_basic_style">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:layout_height">48dip</item>
+        <item name="android:layout_height">@dimen/output_item_height</item>
         <item name="android:textSize">24sp</item>
         <item name="android:padding">8dp</item>
+    </style>
+
+    <style name="help_icon_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/input_item_height</item>
+        <item name="android:src">@drawable/ic_info_black_24dp</item>
     </style>
 
 </resources>

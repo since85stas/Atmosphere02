@@ -13,8 +13,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //open main activity
-
         //Atmosphere atm = new Atmosphere();
         //double cpTest = atm.findEnthalpy(300);
         TextView calculateTextView = (TextView) findViewById(R.id.calculate_text);

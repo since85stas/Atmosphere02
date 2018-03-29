@@ -14,49 +14,49 @@
         android:gravity="center"
         android:textAllCaps="true"
         android:textSize="24sp"
-        android:padding="16dp"
+        android:padding="8dp"
         android:fontFamily="sans-serif"/>
-
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:baselineAligned="false">
-
             <TextView
                 android:text="@string/altitudeTextView"
                 style="@style/input_basic_style" />
             <EditText
                 android:id="@+id/altitudeValue"
                 android:hint="@string/altitudeHint"
-                style="@style/input_basic_style"/>
+                android:inputType="number"
+                style="@style/input_basic_style"
+                />
             <ImageButton
                 android:id="@+id/altitudeHelp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="48dip" />
+                style="@style/help_icon_style" />
         </LinearLayout>
-
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:baselineAligned="false">
-
             <TextView
                 android:text="@string/machTextView"
                 style="@style/input_basic_style" />
             <EditText
                 android:id="@+id/machValue"
                 android:hint="@string/altitudeHint"
+                android:inputType="number"
                 style="@style/input_basic_style"/>
             <ImageButton
                 android:id="@+id/machHelp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="48dip" />
+                style="@style/help_icon_style"/>
         </LinearLayout>
-
+    <Button
+        android:id="@+id/calculateButtonIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/calculate"
+        android:gravity="center"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
         android:gravity="center"
         android:textAllCaps="true"
         android:textSize="24sp"
-        android:padding="16dp"
+        android:padding="8dp"
         android:fontFamily="sans-serif"/>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -80,9 +80,7 @@
             style="@style/output_basic_style"/>
         <ImageButton
             android:id="@+id/pressureHelp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="48dip" />
+            style="@style/help_icon_style" />
     </LinearLayout>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -98,9 +96,7 @@
             style="@style/output_basic_style"/>
         <ImageButton
             android:id="@+id/temperatureHelp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="48dip" />
+            style="@style/help_icon_style" />
     </LinearLayout>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -116,9 +112,7 @@
             style="@style/output_basic_style"/>
         <ImageButton
             android:id="@+id/densityHelp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="48dip" />
+            style="@style/help_icon_style" />
     </LinearLayout>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -134,12 +128,6 @@
             style="@style/output_basic_style"/>
         <ImageButton
             android:id="@+id/velocityHelp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="48dip" />
+            style="@style/help_icon_style" />
     </LinearLayout>
-
-
-
-
 </LinearLayout>

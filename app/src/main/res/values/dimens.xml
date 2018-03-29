@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    
+    <resources>
+        <dimen name="input_item_height">48dp</dimen>
+        <dimen name="output_item_height">48dp</dimen>
+    </resources>
