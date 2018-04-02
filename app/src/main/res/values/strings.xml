@@ -7,6 +7,8 @@
     <string name="altitudeTextView">Altitude</string>
     <string name="machTextView">Mach number</string>
     <string name="pressureTextView">Pressure</string>
+    <string name="fullPressureTextView">FullPressure</string>
+    <string name="fullTempTextView">FullTemperature</string>
     <string name="temperatureTextView">Temperature</string>
     <string name="densityTextView">Density</string>
     <string name="altitudeHint">Enter</string>

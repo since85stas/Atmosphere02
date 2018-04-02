@@ -15,15 +15,14 @@ public class Atmosphere  {
     private double mFullPressure;
     private double mFullTempreture;
     private static final String TAG = "AtmosphereClass";
-    private final int nInter = 1000; //
+ //
 
 
     public Atmosphere() {
     }
 
     public Atmosphere (double height){
-        //mHeight = height;
-        //mMachNumber = machNumber;
+
         /* Defining parametres of earth atmosphere*/
         final double gravity = 9.807;
         final double airConst = 287;
@@ -41,8 +40,37 @@ public class Atmosphere  {
 
         mTempreture = tempretureZones[i] +bParamZones[i+1]*(heightG-heightG0);
         mPressure = pressureZones[i] * Math.exp(-gravity*(heightG-heightG0)/airConst/tempretureZones[i]);
-        mDensity  = pressureZones[i]/airConst/tempretureZones[i];
+        mDensity  = mPressure/airConst/mTempreture;
 
+    }
+
+    public Atmosphere (double height, double machNumber) {
+
+        final double rGc = 8.3144598;
+        final double mu  = 28.98e-03;
+        final double dT  = 0.5 ;
+
+        Atmosphere atm1 = new Atmosphere(height);
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "test abstracts "+atm1.getPressure());
+        }
+        double temp = atm1.getTempreture();
+        double cp1 = atm1.findCp(temp);
+        //double enth = atm1.findEnthalpy(temp);
+        double kappa = cp1/(cp1-rGc/mu);
+        double voiceVelocity = Math.sqrt(kappa*atm1.getPressure()/atm1.getDensity());
+        double velocity = voiceVelocity*machNumber;
+        double dhSum = 0;
+        double dsSum = 0;
+        double cp2   = 0;
+        mFullTempreture = temp;
+        while(dhSum < velocity*velocity/2) {
+            mFullTempreture = mFullTempreture + dT;
+            cp2 =atm1.findCp(mFullTempreture);
+            dhSum = dhSum + (cp1+cp2)*dT/2;
+            dsSum = dsSum + (cp1/(mFullTempreture-dT)+cp2/mFullTempreture)*dT/2;
+        }
+        mFullPressure = atm1.getPressure()*Math.exp(mu/rGc*dsSum);
     }
 
     private double findCp (double temp) {
@@ -77,6 +105,7 @@ public class Atmosphere  {
     }
 
     public double findEnthalpy (double temp){
+        final int nInter = 1000;
         double enthalpyFunction = 0;
         double dT = temp/nInter;
         double temp0 = 0;
@@ -108,7 +137,6 @@ public class Atmosphere  {
     public double getFullPressure() {
         return mFullPressure;
     }
-
 
     public double getFullTempreture() {
         return mFullTempreture;

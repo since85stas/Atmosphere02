@@ -8,14 +8,8 @@
     tools:context="com.batura.stas.atmosphere.CalculateActivity">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="@string/calcAltitudeActivName01"
-        android:gravity="center"
-        android:textAllCaps="true"
-        android:textSize="24sp"
-        android:padding="8dp"
-        android:fontFamily="sans-serif"/>
+        style="@style/title_style" />
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,9 +24,11 @@
                 android:inputType="number"
                 style="@style/input_basic_style"
                 />
-            <ImageButton
-                android:id="@+id/altitudeHelp"
-                style="@style/help_icon_style" />
+
+        <ImageButton
+            android:id="@+id/altitudeHelp"
+            style="@style/help_icon_style"
+            android:onClick="calculateHelpOnClick" />
         </LinearLayout>
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
@@ -58,14 +54,8 @@
         android:text="@string/calculate"
         android:gravity="center"/>
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/calcAltitudeActivName02"
-        android:gravity="center"
-        android:textAllCaps="true"
-        android:textSize="24sp"
-        android:padding="8dp"
-        android:fontFamily="sans-serif"/>
+        style="@style/title_style"
+        android:text="@string/calcAltitudeActivName02"/>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -120,14 +110,30 @@
         android:orientation="horizontal"
         android:baselineAligned="false">
         <TextView
-            android:text="@string/velocityTextView"
+            android:text="@string/fullPressureTextView"
             style="@style/output_basic_style" />
         <TextView
-            android:id="@+id/velocityValue"
+            android:id="@+id/fullPressureValue"
             android:hint="@string/resultHint"
             style="@style/output_basic_style"/>
         <ImageButton
-            android:id="@+id/velocityHelp"
+            android:id="@+id/fullPressureHelp"
+            style="@style/help_icon_style" />
+    </LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+        <TextView
+            android:text="@string/fullTempTextView"
+            style="@style/output_basic_style" />
+        <TextView
+            android:id="@+id/fullTempValue"
+            android:hint="@string/resultHint"
+            style="@style/output_basic_style"/>
+        <ImageButton
+            android:id="@+id/fullTempHelp"
             style="@style/help_icon_style" />
     </LinearLayout>
 </LinearLayout>
