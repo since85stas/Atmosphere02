@@ -14,6 +14,7 @@ import android.widget.Toast;
 public class CalculateActivity extends AppCompatActivity {
 
     private static final String TAG = "CalcClass";
+    public final static String USER = "stasbatura.myapp.USER";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,17 +98,36 @@ public class CalculateActivity extends AppCompatActivity {
     }
 
     public void calculateHelpOnClick(View view) {
+        Intent helpIntent = new Intent(CalculateActivity.this,HelpActivity.class);
         switch (view.getId()){
             case(R.id.altitudeHelp)   :
-                Intent helpIntent = new Intent(CalculateActivity.this,HelpActivity.class);
-
+                helpIntent.putExtra("helpResources",R.string.altitudeHelpString);
+                startActivity(helpIntent);
                 break;
-            case(R.id.machHelp)       :   break;
-            case(R.id.pressureHelp)   :   break;
-            case(R.id.temperatureHelp):   break;
-            case(R.id.densityHelp)    :   break;
-            case (R.id.fullPressureHelp): break;
-            case (R.id.fullTempHelp)  :   break;
+            case(R.id.machHelp)       :
+                helpIntent.putExtra("helpResources",R.string.machHelpString);
+                startActivity(helpIntent);
+                break;
+            case(R.id.pressureHelp)   :
+                helpIntent.putExtra("helpResources",R.string.pressureHelpString);
+                startActivity(helpIntent);
+                break;
+            case(R.id.temperatureHelp):
+                helpIntent.putExtra("helpResources",R.string.temperatureHelpString);
+                startActivity(helpIntent);
+                break;
+            case(R.id.densityHelp)    :
+                helpIntent.putExtra("helpResources",R.string.densityHelpString);
+                startActivity(helpIntent);
+                break;
+            case (R.id.fullPressureHelp):
+                helpIntent.putExtra("helpResources",R.string.fullPressureHelpString);
+                startActivity(helpIntent);
+                break;
+            case (R.id.fullTempHelp)  :
+                helpIntent.putExtra("helpResources",R.string.fullTemperatureHelpString);
+                startActivity(helpIntent);
+                break;
 
         }
     }

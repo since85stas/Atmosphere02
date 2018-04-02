@@ -8,20 +8,17 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/calculate_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/calculate"
-        android:textSize="20sp"
-        android:padding="8dp"/>
+        android:id="@+id/textMode"
+        style="@style/mainButtonStyle"
+        android:text="@string/calculate"/>
+
+    <Button
+        android:id="@+id/graphMode"
+        style="@style/mainButtonStyle"
+        android:text="@string/graphButton" />
     <Button
         android:id="@+id/description_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/Description"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:padding="8dp"/>
+        style="@style/mainButtonStyle"
+        android:text="@string/Description"/>
 
 </LinearLayout>

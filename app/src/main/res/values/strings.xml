@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Atmosphere</string>
     <string name="calculate">Calculate</string>
-    <string name="Description">Description</string>
+    <string name="Description">About</string>
     <string name="calcAltitudeActivName01">Input parameters</string>
     <string name="calcAltitudeActivName02">Output parameters</string>
     <string name="altitudeTextView">Altitude</string>
@@ -15,5 +15,18 @@
     <string name="resultHint">Result</string>
     <string name="plainText">0</string>
     <string name="velocityTextView">Velocity</string>
+    <string name="helpTag">Parameter info</string>
+    <string name="graphButton" >Graph mode</string>
+
+    //help resourses
+    <string name="altitudeHelpString">Enter altitude in meters under the Earth surface.</string>
+    <string name="machHelpString">Enter flight Mach number this value uses to calculate flow full parameters.
+                                  If this value equals zero only static parameters will be displayed.</string>
+    <string name="pressureHelpString">Pressure in Pa </string>
+    <string name="densityHelpString" >Density in kg/m^3 </string>
+    <string name="temperatureHelpString">Temperature in K</string>
+    <string name="fullPressureHelpString">Full pressure of inlet flow in Pa</string>
+    <string name="fullTemperatureHelpString">Full temperature of inlet flow in K</string>
+
 
 </resources>
