@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.batura.stas.atmosphere.R;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.helper.StaticLabelsFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
@@ -46,32 +47,52 @@ public class GraphActivity extends AppCompatActivity{
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                EditText leftEdgeValue = (EditText) findViewById(R.id.graphEditText1);
+                EditText rightEdgeValue = (EditText) findViewById(R.id.graphEditText2);
+
+                if( (leftEdgeValue.getText().length()!=0)&&(rightEdgeValue.getText().length()!=0)){
+
+                    String leftEdgeString = leftEdgeValue.getText().toString();
+                    String rightEdgeString = rightEdgeValue.getText().toString();
+                    leftEdge = Double.parseDouble(leftEdgeString);
+                    rightEdge = Double.parseDouble(rightEdgeString);
+                    if (leftEdge>85) {
+                        leftEdge = 85;
+                        Toast toast01 = Toast.makeText(getApplicationContext(),"Maximum altitude exceeding",Toast.LENGTH_SHORT);
+                        toast01.show();
+                    }
+                    if (rightEdge>85) {
+                        rightEdge = 85;
+                        Toast toast01 = Toast.makeText(getApplicationContext(),"Maximum altitude exceeding",Toast.LENGTH_SHORT);
+                        toast01.show();
+                    }
+                    if (leftEdge > rightEdge) {
+                        Toast toast01 = Toast.makeText(getApplicationContext(), "Wrong edge values", Toast.LENGTH_SHORT);
+                        toast01.show();
+                    }
+                }
+                else {
+                    Toast toast01 = Toast.makeText(getApplicationContext(),"Default values was taken",Toast.LENGTH_SHORT);
+                    toast01.show();
+                }
                 GraphView testGraph = (GraphView) findViewById(R.id.graph);
-                LineGraphSeries <DataPoint> series = new LineGraphSeries<>(data(leftEdge,rightEdge,currentCase) );
+                testGraph.getGridLabelRenderer().setHorizontalAxisTitle("Altitude, m");
+                switch (currentCase){
+                    case (PRESSURE_CASE):
+                        testGraph.getGridLabelRenderer().setVerticalAxisTitle("Pressure");
+                        break;
+                    case (DENSITY_CASE):
+                        testGraph.getGridLabelRenderer().setVerticalAxisTitle("Density");
+                        break;
+                    case (TEMPERTAURE_CASE):
+                        testGraph.getGridLabelRenderer().setVerticalAxisTitle("Temperature, K");
+                        break;
+                }
+                // value getting in function in m , so *1000
+                LineGraphSeries <DataPoint> series = new LineGraphSeries<>(data(leftEdge*1000,rightEdge*1000,currentCase) );
                 testGraph.addSeries(series);
             }
         });
-
-        EditText leftEdgeValue = (EditText) findViewById(R.id.graphEditText1);
-        EditText rightEdgeValue = (EditText) findViewById(R.id.graphEditText2);
-        if( (leftEdgeValue.getText().length()!=0)&&(rightEdgeValue.getText().length()!=0)){
-            String leftEdgeString = leftEdgeValue.getText().toString();
-            String rightEdgeString = rightEdgeValue.getText().toString();
-            leftEdge = Double.parseDouble(leftEdgeString);
-            rightEdge = Double.parseDouble(rightEdgeString);
-            if (leftEdge > rightEdge) {
-                Toast toast01 = Toast.makeText(getApplicationContext(), "Wrong edge values", Toast.LENGTH_SHORT);
-                toast01.show();
-            }
-        }
-        else {
-            Toast toast01 = Toast.makeText(getApplicationContext(),"Default values was taken",Toast.LENGTH_SHORT);
-            toast01.show();
-        }
-
-
-
-
     }
 
     View.OnClickListener radioButtonClickListner = new View.OnClickListener() {
@@ -93,7 +114,7 @@ public class GraphActivity extends AppCompatActivity{
     };
 
     public DataPoint[] data(double leftEdge, double rightEdge, int paramCasein){
-        final int numPoints = 100;
+        final int numPoints = 30;
         DataPoint[] values = new DataPoint[numPoints];     //creating an object of type DataPoint[] of size 'n'
         DataPoint point1 = new DataPoint(0,0);
         for (int i=0;i<numPoints;i++){
@@ -103,13 +124,13 @@ public class GraphActivity extends AppCompatActivity{
             Atmosphere atm = new Atmosphere(xCoordinate);
             switch (paramCasein){
                 case(PRESSURE_CASE):
-                    point1 = new DataPoint(atm.getPressure(),xCoordinate);
+                    point1 = new DataPoint(xCoordinate,atm.getPressure());
                     break;
                 case(DENSITY_CASE):
-                    point1 = new DataPoint(atm.getDensity(),xCoordinate);
+                    point1 = new DataPoint(xCoordinate,atm.getDensity());
                     break;
                 case(TEMPERTAURE_CASE):
-                    point1 = new DataPoint(atm.getTempreture(),xCoordinate);
+                    point1 = new DataPoint(xCoordinate,atm.getTempreture());
                     break;
             }
             values[i] = point1;

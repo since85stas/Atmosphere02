@@ -1,14 +1,14 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="@android:style/Theme.Material.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="input_basic_style">
+    <style name="input_basic_styleTextView">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:layout_height">@dimen/input_item_height</item>
@@ -16,12 +16,13 @@
         <item name="android:padding">8dp</item>
     </style>
 
-    <style name="output_basic_style">
+    <style name="output_basic_styleTextView">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:layout_height">@dimen/output_item_height</item>
         <item name="android:textSize">22sp</item>
         <item name="android:padding">8dp</item>
+
     </style>
 
     <style name="help_icon_style">

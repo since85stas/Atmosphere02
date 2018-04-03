@@ -5,7 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.batura.stas.atmosphere.CalculateActivity">
+    android:paddingRight="@dimen/activityPaddingLateral"
+    android:paddingLeft="@dimen/activityPaddingLateral"
+    tools:context="com.batura.stas.atmosphere.CalculateActivity"
+    >
 
     <TextView
         android:text="@string/calcAltitudeActivName01"
@@ -17,12 +20,13 @@
             android:baselineAligned="false">
             <TextView
                 android:text="@string/altitudeTextView"
-                style="@style/input_basic_style" />
+                style="@style/Widget.AppCompat.AutoCompleteTextView"
+                />
             <EditText
                 android:id="@+id/altitudeValue"
                 android:hint="@string/altitudeHint"
                 android:inputType="number"
-                style="@style/input_basic_style"
+                style="@style/input_basic_styleTextView"
                 />
 
         <ImageButton
@@ -37,15 +41,16 @@
             android:baselineAligned="false">
             <TextView
                 android:text="@string/machTextView"
-                style="@style/input_basic_style" />
+                style="@style/input_basic_styleTextView" />
             <EditText
                 android:id="@+id/machValue"
                 android:hint="@string/altitudeHint"
                 android:inputType="number"
-                style="@style/input_basic_style"/>
+                style="@style/input_basic_styleTextView"/>
             <ImageButton
                 android:id="@+id/machHelp"
-                style="@style/help_icon_style"/>
+                style="@style/help_icon_style"
+                android:onClick="calculateHelpOnClick"/>
         </LinearLayout>
     <Button
         android:id="@+id/calculateButtonIn"
@@ -63,14 +68,15 @@
         android:baselineAligned="false">
         <TextView
             android:text="@string/pressureTextView"
-            style="@style/output_basic_style" />
+            style="@style/output_basic_styleTextView" />
         <TextView
             android:id="@+id/pressureValue"
             android:hint="@string/resultHint"
-            style="@style/output_basic_style"/>
+            style="@style/output_basic_styleTextView"/>
         <ImageButton
             android:id="@+id/pressureHelp"
-            style="@style/help_icon_style" />
+            style="@style/help_icon_style"
+            android:onClick="calculateHelpOnClick"/>
     </LinearLayout>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -79,14 +85,15 @@
         android:baselineAligned="false">
         <TextView
             android:text="@string/temperatureTextView"
-            style="@style/output_basic_style" />
+            style="@style/output_basic_styleTextView" />
         <TextView
             android:id="@+id/temperatureValue"
             android:hint="@string/resultHint"
-            style="@style/output_basic_style"/>
+            style="@style/output_basic_styleTextView"/>
         <ImageButton
             android:id="@+id/temperatureHelp"
-            style="@style/help_icon_style" />
+            style="@style/help_icon_style"
+            android:onClick="calculateHelpOnClick"/>
     </LinearLayout>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -95,14 +102,15 @@
         android:baselineAligned="false">
         <TextView
             android:text="@string/densityTextView"
-            style="@style/output_basic_style" />
+            style="@style/output_basic_styleTextView" />
         <TextView
             android:id="@+id/densityValue"
             android:hint="@string/resultHint"
-            style="@style/output_basic_style"/>
+            style="@style/output_basic_styleTextView"/>
         <ImageButton
             android:id="@+id/densityHelp"
-            style="@style/help_icon_style" />
+            style="@style/help_icon_style"
+            android:onClick="calculateHelpOnClick"/>
     </LinearLayout>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -111,14 +119,15 @@
         android:baselineAligned="false">
         <TextView
             android:text="@string/fullPressureTextView"
-            style="@style/output_basic_style" />
+            style="@style/output_basic_styleTextView" />
         <TextView
             android:id="@+id/fullPressureValue"
             android:hint="@string/resultHint"
-            style="@style/output_basic_style"/>
+            style="@style/output_basic_styleTextView"/>
         <ImageButton
             android:id="@+id/fullPressureHelp"
-            style="@style/help_icon_style" />
+            style="@style/help_icon_style"
+            android:onClick="calculateHelpOnClick"/>
     </LinearLayout>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -127,13 +136,14 @@
         android:baselineAligned="false">
         <TextView
             android:text="@string/fullTempTextView"
-            style="@style/output_basic_style" />
+            style="@style/output_basic_styleTextView" />
         <TextView
             android:id="@+id/fullTempValue"
             android:hint="@string/resultHint"
-            style="@style/output_basic_style"/>
+            style="@style/output_basic_styleTextView"/>
         <ImageButton
             android:id="@+id/fullTempHelp"
-            style="@style/help_icon_style" />
+            style="@style/help_icon_style"
+            android:onClick="calculateHelpOnClick"/>
     </LinearLayout>
 </LinearLayout>

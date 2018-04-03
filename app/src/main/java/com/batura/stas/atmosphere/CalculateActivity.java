@@ -39,7 +39,7 @@ public class CalculateActivity extends AppCompatActivity {
                             Toast toast01 = Toast.makeText(getApplicationContext(),"Wrong altitiude value",Toast.LENGTH_SHORT);
                             toast01.show();
                         }
-                        if (altitudeValue > 90000) {
+                        if (altitudeValue > 85000) {
                             Toast toast01 = Toast.makeText(getApplicationContext(),"Maximum altitude exceeding",Toast.LENGTH_SHORT);
                             toast01.show();
                         }

@@ -15,6 +15,7 @@
             android:id="@+id/RadioGroup"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/input_item_height"
+            android:checkedButton="@+id/pressureRadioButton"
             android:orientation="horizontal">
 
             <RadioButton
@@ -41,15 +42,15 @@
         android:baselineAligned="false">
         <TextView
             android:text="@string/graphTextView"
-            style="@style/input_basic_style"/>
+            style="@style/input_basic_styleTextView"/>
         <EditText
             android:id="@+id/graphEditText1"
             android:hint="@string/altitudeRange1"
-            style="@style/input_basic_style"/>
+            style="@style/input_basic_styleTextView"/>
         <EditText
             android:id="@+id/graphEditText2"
             android:hint="@string/altitudeRange2"
-            style="@style/input_basic_style"/>
+            style="@style/input_basic_styleTextView"/>
         <Button
             android:id="@+id/graphOkButton"
             android:text="Ok"
