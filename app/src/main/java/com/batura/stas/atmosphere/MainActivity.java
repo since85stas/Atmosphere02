@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -13,18 +14,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Atmosphere atm = new Atmosphere();
-        //double cpTest = atm.findEnthalpy(300);
-        TextView calculateTextView = (TextView) findViewById(R.id.calculate_text);
-        calculateTextView.setOnClickListener(new View.OnClickListener() {
+        Button calculateButton = (Button) findViewById(R.id.textMode);
+        calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent calculateIntent = new Intent(MainActivity.this,CalculateActivity.class);
                 startActivity(calculateIntent);
             }
         });
-        //Atmosphere atm = new Atmosphere();
-        //atm.findCp(300);
+
+        Button graphButton = (Button) findViewById(R.id.graphMode);
+        graphButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent graphIntent = new Intent(MainActivity.this,GraphActivity.class);
+                startActivity(graphIntent);
+            }
+        });
     }
 }
 

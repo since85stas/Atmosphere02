@@ -51,4 +51,10 @@
         <item name="android:padding">8dp</item>
     </style>
 
+    <style name="radioButtonStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">@dimen/input_item_height</item>
+    </style>
+
 </resources>

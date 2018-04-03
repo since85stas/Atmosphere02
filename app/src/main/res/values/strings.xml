@@ -16,9 +16,14 @@
     <string name="plainText">0</string>
     <string name="velocityTextView">Velocity</string>
     <string name="helpTag">Parameter info</string>
-    <string name="graphButton" >Graph mode</string>
 
-    //help resourses
+    //graph cativity resources
+    <string name="graphButton" >Graph mode</string>
+    <string name="graphTextView">Altitude range</string>
+    <string name="altitudeRange1">From</string>
+    <string name="altitudeRange2">To</string>
+
+    //help resources
     <string name="altitudeHelpString">Enter altitude in meters under the Earth surface.</string>
     <string name="machHelpString">Enter flight Mach number this value uses to calculate flow full parameters.
                                   If this value equals zero only static parameters will be displayed.</string>
