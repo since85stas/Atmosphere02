@@ -76,7 +76,8 @@ public class GraphActivity extends AppCompatActivity{
                     toast01.show();
                 }
                 GraphView testGraph = (GraphView) findViewById(R.id.graph);
-                testGraph.getGridLabelRenderer().setHorizontalAxisTitle("Altitude, m");
+                testGraph.removeAllSeries();
+                testGraph.getGridLabelRenderer().setHorizontalAxisTitle("Altitude, Кm");
                 switch (currentCase){
                     case (PRESSURE_CASE):
                         testGraph.getGridLabelRenderer().setVerticalAxisTitle("Pressure");
@@ -89,8 +90,12 @@ public class GraphActivity extends AppCompatActivity{
                         break;
                 }
                 // value getting in function in m , so *1000
-                LineGraphSeries <DataPoint> series = new LineGraphSeries<>(data(leftEdge*1000,rightEdge*1000,currentCase) );
+                LineGraphSeries <DataPoint> series = new LineGraphSeries<>(data(leftEdge,rightEdge,currentCase) );
                 testGraph.addSeries(series);
+
+                testGraph.getViewport().setScalable(true);
+                testGraph.getViewport().setScalableY(true);
+
             }
         });
     }
@@ -114,7 +119,7 @@ public class GraphActivity extends AppCompatActivity{
     };
 
     public DataPoint[] data(double leftEdge, double rightEdge, int paramCasein){
-        final int numPoints = 30;
+        final int numPoints = 50;
         DataPoint[] values = new DataPoint[numPoints];     //creating an object of type DataPoint[] of size 'n'
         DataPoint point1 = new DataPoint(0,0);
         for (int i=0;i<numPoints;i++){

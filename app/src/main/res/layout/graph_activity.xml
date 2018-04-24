@@ -10,13 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
         <RadioGroup
             android:id="@+id/RadioGroup"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/input_item_height"
             android:checkedButton="@+id/pressureRadioButton"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:baselineAligned="false">
 
             <RadioButton
                 android:id="@+id/pressureRadioButton"
@@ -34,7 +34,6 @@
                 android:text="@string/temperatureTextView" />
         </RadioGroup>
 
-
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -42,24 +41,28 @@
         android:baselineAligned="false">
         <TextView
             android:text="@string/graphTextView"
-            style="@style/input_basic_styleTextView"/>
+            style="@style/input_basic_styleTextView"
+            android:layout_width="@dimen/input_item_width"/>
         <EditText
             android:id="@+id/graphEditText1"
             android:hint="@string/altitudeRange1"
-            style="@style/input_basic_styleTextView"/>
+            style="@style/input_basic_styleTextView"
+            android:layout_width="@dimen/edit_graphText_width"/>/>
         <EditText
             android:id="@+id/graphEditText2"
             android:hint="@string/altitudeRange2"
-            style="@style/input_basic_styleTextView"/>
+            style="@style/input_basic_styleTextView"
+            android:layout_width="@dimen/edit_graphText_width"/>
         <Button
             android:id="@+id/graphOkButton"
             android:text="Ok"
-            style="@style/help_icon_style"/>
+            style="@style/help_icon_style"
+            android:background="@color/colorPrimary"/>
         <ImageButton
             android:id="@+id/graphHelp"
             android:contentDescription="@string/helpTag"
-            style="@style/help_icon_style"/>
-
+            style="@style/help_icon_style"
+            android:paddingLeft="8dp"/>
     </LinearLayout>
 
     <com.jjoe64.graphview.GraphView

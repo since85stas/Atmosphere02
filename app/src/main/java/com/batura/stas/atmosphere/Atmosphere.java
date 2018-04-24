@@ -21,7 +21,7 @@ public class Atmosphere  {
     public Atmosphere() {
     }
 
-    public Atmosphere (double height){
+    public Atmosphere (double heightKm){
 
         /* Defining parametres of earth atmosphere*/
         final double gravity = 9.807;
@@ -32,8 +32,10 @@ public class Atmosphere  {
         double tempretureZones[]={288.15,216.65,216.65,228.65,270.65,270.65,214.65,186.65};
         double bParamZones[]    = {-0.0065,-0.0065,0,0.001,0.0028,-0.0028,-0.002,0};
 
+        double height = heightKm*1000;
+
         int i = 0;
-        while (height >= heightZones[i] )i++ ;
+        while (height >= heightZones[i] )i++;
         i--;
         double heightG0 = radiusPlanet*heightZones[i]/(radiusPlanet+heightZones[i]);
         double heightG = radiusPlanet*height/(radiusPlanet+height);
@@ -44,13 +46,16 @@ public class Atmosphere  {
 
     }
 
-    public Atmosphere (double height, double machNumber) {
+    public Atmosphere (double heightKm, double machNumber) {
 
         final double rGc = 8.3144598;
         final double mu  = 28.98e-03;
         final double dT  = 0.5 ;
 
-        Atmosphere atm1 = new Atmosphere(height);
+        //double height = heightKm*1000; // caclculating to meters
+
+
+        Atmosphere atm1 = new Atmosphere(heightKm);
         if (BuildConfig.DEBUG) {
             Log.d(TAG, "test abstracts "+atm1.getPressure());
         }

@@ -11,6 +11,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+import java.util.Formatter;
+
 public class CalculateActivity extends AppCompatActivity {
 
     private static final String TAG = "CalcClass";
@@ -39,7 +42,7 @@ public class CalculateActivity extends AppCompatActivity {
                             Toast toast01 = Toast.makeText(getApplicationContext(),"Wrong altitiude value",Toast.LENGTH_SHORT);
                             toast01.show();
                         }
-                        if (altitudeValue > 85000) {
+                        if (altitudeValue > 85) {
                             Toast toast01 = Toast.makeText(getApplicationContext(),"Maximum altitude exceeding",Toast.LENGTH_SHORT);
                             toast01.show();
                         }
@@ -53,9 +56,11 @@ public class CalculateActivity extends AppCompatActivity {
                             TextView densityTextView = findViewById(R.id.densityValue);
                             TextView temperatureTextView = findViewById(R.id.temperatureValue);
 
-                            pressureTextView.setText(String.valueOf(pressure));
-                            densityTextView.setText(String.valueOf(density));
-                            temperatureTextView.setText(String.valueOf(temperature));
+//                            String ss = formatPresssure(pressure);
+
+                            pressureTextView.setText(formatPresssure(pressure));
+                            densityTextView.setText(formatDens(density));
+                            temperatureTextView.setText(formatTemp(temperature));
                         }
                     }
                     //if( Double. )
@@ -79,15 +84,22 @@ public class CalculateActivity extends AppCompatActivity {
                         TextView densityTextView = findViewById(R.id.densityValue);
                         TextView temperatureTextView = findViewById(R.id.temperatureValue);
 
-                        pressureTextView.setText(String.valueOf(pressure));
-                        densityTextView.setText(String.valueOf(density));
-                        temperatureTextView.setText(String.valueOf(temperature));
+                        //Formatter f = new Formatter();
+                        //f.format("%5.4f");
+                        //String ss = formatPresssure(pressure);
+
+                        pressureTextView.setText(formatPresssure(pressure));
+                        densityTextView.setText(formatDens(density));
+                        temperatureTextView.setText(formatTemp(temperature));
 
                         Atmosphere atmFull = new Atmosphere(altitudeValue,machValue);
                         double fullPressure = atmFull.getFullPressure();
                         TextView fullPressureTextView = findViewById(R.id.fullPressureValue);
+                        fullPressureTextView.setText(formatPresssure(fullPressure));
 
-                        fullPressureTextView.setText((String.valueOf(fullPressure)));
+                        TextView fullTemperatureTextView = findViewById(R.id.fullTempValue);
+                        double fullTemp = atmFull.getFullTempreture();
+                        fullTemperatureTextView.setText(formatPresssure(fullPressure));
 
                     }
 
@@ -131,4 +143,23 @@ public class CalculateActivity extends AppCompatActivity {
 
         }
     }
+
+    private String formatPresssure (double press) {
+        DecimalFormat magnitudeFormat = new DecimalFormat("000.000");
+        return magnitudeFormat.format(press);
+    }
+
+    private String formatTemp (double temp) {
+        DecimalFormat magnitudeFormat = new DecimalFormat("000.00000");
+        return magnitudeFormat.format(temp);
+    }
+
+    private String formatDens (double dens) {
+        DecimalFormat magnitudeFormat = new DecimalFormat("0.0000000");
+        return magnitudeFormat.format(dens);
+    }
+
+
 }
+
+

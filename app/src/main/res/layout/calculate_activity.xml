@@ -20,7 +20,7 @@
             android:baselineAligned="false">
             <TextView
                 android:text="@string/altitudeTextView"
-                style="@style/Widget.AppCompat.AutoCompleteTextView"
+                style="@style/input_basic_styleTextView"
                 />
             <EditText
                 android:id="@+id/altitudeValue"
@@ -57,26 +57,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/calculate"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textSize="14sp"
+        android:background="@color/colorPrimary"/>
     <TextView
         style="@style/title_style"
         android:text="@string/calcAltitudeActivName02"/>
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:baselineAligned="false">
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
         <TextView
-            android:text="@string/pressureTextView"
-            style="@style/output_basic_styleTextView" />
+            style="@style/output_basic_styleTextView"
+            android:text="@string/pressureTextView" />
+
         <TextView
             android:id="@+id/pressureValue"
-            android:hint="@string/resultHint"
-            style="@style/output_basic_styleTextView"/>
+            style="@style/output_basic_styleTextView"
+            android:hint="@string/resultHint" />
+
         <ImageButton
             android:id="@+id/pressureHelp"
             style="@style/help_icon_style"
-            android:onClick="calculateHelpOnClick"/>
+            android:onClick="calculateHelpOnClick"
+            />
     </LinearLayout>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
