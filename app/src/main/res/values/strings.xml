@@ -33,5 +33,10 @@
     <string name="fullPressureHelpString">Full pressure of inlet flow in Pa</string>
     <string name="fullTemperatureHelpString">Full temperature of inlet flow in K</string>
 
+    //menu resources
+    <string name="menuTitle">menuTitle</string>
+    <string name="menuCalculate">Calculate</string>
+    <string name="menuGraph">Graph mode</string>
+
 
 </resources>
