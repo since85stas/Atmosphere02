@@ -4,15 +4,15 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
-import java.util.Formatter;
 
 public class CalculateActivity extends AppCompatActivity {
 
@@ -108,6 +108,36 @@ public class CalculateActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_calculate,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        // получим идентификатор выбранного пункта меню
+        int id = item.getItemId();
+
+        // Операции для выбранного пункта меню
+        switch (id) {
+            case R.id.menuCalculateSelectGraph:
+
+                Intent graphIntent = new Intent(CalculateActivity.this,GraphActivity.class);
+                startActivity(graphIntent);
+
+                return true;
+            case R.id.menuCalculateSelectAbout:
+
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+            }
 
     public void calculateHelpOnClick(View view) {
         Intent helpIntent = new Intent(CalculateActivity.this,HelpActivity.class);

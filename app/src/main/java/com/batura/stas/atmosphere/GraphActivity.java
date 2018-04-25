@@ -1,8 +1,11 @@
 package com.batura.stas.atmosphere;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -99,6 +102,37 @@ public class GraphActivity extends AppCompatActivity{
             }
         });
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_graph,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        // получим идентификатор выбранного пункта меню
+        int id = item.getItemId();
+
+        // Операции для выбранного пункта меню
+        switch (id) {
+            case R.id.menuGraphSelectCalculate:
+
+                Intent graphIntent = new Intent(GraphActivity.this,CalculateActivity.class);
+                startActivity(graphIntent);
+
+                return true;
+            case R.id.menuGraphSelectAbout:
+
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+        }
 
     View.OnClickListener radioButtonClickListner = new View.OnClickListener() {
         @Override

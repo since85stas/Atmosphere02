@@ -34,9 +34,10 @@
     <string name="fullTemperatureHelpString">Full temperature of inlet flow in K</string>
 
     //menu resources
-    <string name="menuTitle">menuTitle</string>
+    <string name="menuTitle">Select mode</string>
     <string name="menuCalculate">Calculate</string>
     <string name="menuGraph">Graph mode</string>
+    <string name="menuAbout">About</string>
 
 
 </resources>
