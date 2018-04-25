@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:orderInCategory="100"
+        android:title="@string/menuTitle"
+        app:showAsAction="always"/>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menuAboutSelectCalculate"
+            android:orderInCategory="100"
+            android:title="@string/menuCalculate"
+            app:showAsAction="never"/>
+
+        <item
+            android:id="@+id/menuAboutSelectGraph"
+            android:orderInCategory="100"
+            android:title="@string/menuGraph"
+            app:showAsAction="never"/>
+    </group>
+</menu>

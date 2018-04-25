@@ -63,7 +63,6 @@ public class CalculateActivity extends AppCompatActivity {
                             temperatureTextView.setText(formatTemp(temperature));
                         }
                     }
-                    //if( Double. )
                 }
                 else {
                     String machStr = machValueText.getText().toString();
@@ -84,10 +83,6 @@ public class CalculateActivity extends AppCompatActivity {
                         TextView densityTextView = findViewById(R.id.densityValue);
                         TextView temperatureTextView = findViewById(R.id.temperatureValue);
 
-                        //Formatter f = new Formatter();
-                        //f.format("%5.4f");
-                        //String ss = formatPresssure(pressure);
-
                         pressureTextView.setText(formatPresssure(pressure));
                         densityTextView.setText(formatDens(density));
                         temperatureTextView.setText(formatTemp(temperature));
@@ -99,12 +94,9 @@ public class CalculateActivity extends AppCompatActivity {
 
                         TextView fullTemperatureTextView = findViewById(R.id.fullTempValue);
                         double fullTemp = atmFull.getFullTempreture();
-                        fullTemperatureTextView.setText(formatPresssure(fullPressure));
-
+                        fullTemperatureTextView.setText(formatPresssure(fullTemp));
                     }
-
                 }
-
             }
         });
     }
@@ -124,15 +116,13 @@ public class CalculateActivity extends AppCompatActivity {
         // Операции для выбранного пункта меню
         switch (id) {
             case R.id.menuCalculateSelectGraph:
-
                 Intent graphIntent = new Intent(CalculateActivity.this,GraphActivity.class);
                 startActivity(graphIntent);
-
                 return true;
             case R.id.menuCalculateSelectAbout:
-
+                Intent aboutIntent = new Intent(CalculateActivity.this,AboutActivity.class);
+                startActivity(aboutIntent);
                 return true;
-
             default:
                 return super.onOptionsItemSelected(item);
         }

@@ -58,11 +58,13 @@
             android:text="Ok"
             style="@style/help_icon_style"
             android:background="@color/colorPrimary"/>
+
         <ImageButton
             android:id="@+id/graphHelp"
-            android:contentDescription="@string/helpTag"
             style="@style/help_icon_style"
-            android:paddingLeft="8dp"/>
+            android:contentDescription="@string/helpTag"
+            android:onClick="graphHelpOnClick"
+            android:paddingLeft="8dp" />
     </LinearLayout>
 
     <com.jjoe64.graphview.GraphView

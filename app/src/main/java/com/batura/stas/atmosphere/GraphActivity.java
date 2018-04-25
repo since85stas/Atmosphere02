@@ -19,7 +19,7 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 /**
- * Created by seeyou on 02.04.2018.
+ * Created by Stas Batura on 02.04.2018.
  */
 
 public class GraphActivity extends AppCompatActivity{
@@ -43,8 +43,8 @@ public class GraphActivity extends AppCompatActivity{
         RadioButton temperatureRadioButton = (RadioButton)findViewById(R.id.temperatureRadioButton);
         temperatureRadioButton.setOnClickListener(radioButtonClickListner);
 
-        leftEdge = 1;       // default Values in Km
-        rightEdge = 10;
+        leftEdge = 0;       // default Values in Km
+        rightEdge = 50;
 
         Button okButton =(Button)findViewById(R.id.graphOkButton);
         okButton.setOnClickListener(new View.OnClickListener() {
@@ -83,16 +83,16 @@ public class GraphActivity extends AppCompatActivity{
                 testGraph.getGridLabelRenderer().setHorizontalAxisTitle("Altitude, Кm");
                 switch (currentCase){
                     case (PRESSURE_CASE):
-                        testGraph.getGridLabelRenderer().setVerticalAxisTitle("Pressure");
+                        //testGraph.getGridLabelRenderer().setVerticalAxisTitle("Pressure");
                         break;
                     case (DENSITY_CASE):
-                        testGraph.getGridLabelRenderer().setVerticalAxisTitle("Density");
+                        //testGraph.getGridLabelRenderer().setVerticalAxisTitle("Density");
                         break;
                     case (TEMPERTAURE_CASE):
-                        testGraph.getGridLabelRenderer().setVerticalAxisTitle("Temperature, K");
+                        //testGraph.getGridLabelRenderer().setVerticalAxisTitle("Temperature, K");
                         break;
                 }
-                // value getting in function in m , so *1000
+
                 LineGraphSeries <DataPoint> series = new LineGraphSeries<>(data(leftEdge,rightEdge,currentCase) );
                 testGraph.addSeries(series);
 
@@ -102,6 +102,7 @@ public class GraphActivity extends AppCompatActivity{
             }
         });
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -119,13 +120,12 @@ public class GraphActivity extends AppCompatActivity{
         // Операции для выбранного пункта меню
         switch (id) {
             case R.id.menuGraphSelectCalculate:
-
                 Intent graphIntent = new Intent(GraphActivity.this,CalculateActivity.class);
                 startActivity(graphIntent);
-
                 return true;
             case R.id.menuGraphSelectAbout:
-
+                Intent aboutIntent = new Intent(GraphActivity.this,AboutActivity.class);
+                startActivity(aboutIntent);
                 return true;
 
             default:
@@ -153,7 +153,7 @@ public class GraphActivity extends AppCompatActivity{
     };
 
     public DataPoint[] data(double leftEdge, double rightEdge, int paramCasein){
-        final int numPoints = 50;
+        final int numPoints = 500;
         DataPoint[] values = new DataPoint[numPoints];     //creating an object of type DataPoint[] of size 'n'
         DataPoint point1 = new DataPoint(0,0);
         for (int i=0;i<numPoints;i++){
@@ -177,4 +177,9 @@ public class GraphActivity extends AppCompatActivity{
         return values;
     }
 
+    public void graphHelpOnClick(View view) {
+        Intent helpIntent = new Intent(GraphActivity.this,HelpActivity.class);
+        helpIntent.putExtra("helpResources",R.string.graphHelpString);
+        startActivity(helpIntent);
+    }
 }
