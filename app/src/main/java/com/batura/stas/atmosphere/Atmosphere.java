@@ -74,6 +74,7 @@ public class Atmosphere  {
             cp2 =atm1.findCp(mFullTempreture);
             dhSum = dhSum + (cp1+cp2)*dT/2;
             dsSum = dsSum + (cp1/(mFullTempreture-dT)+cp2/mFullTempreture)*dT/2;
+            cp1 = cp2;
         }
         mFullPressure = atm1.getPressure()*Math.exp(mu/rGc*dsSum);
     }

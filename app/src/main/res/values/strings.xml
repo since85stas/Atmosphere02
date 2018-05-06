@@ -11,7 +11,8 @@
     <string name="fullTempTextView">Full temperature</string>
     <string name="temperatureTextView">Temperature</string>
     <string name="densityTextView">Density</string>
-    <string name="altitudeHint">Enter</string>
+    <string name="altitudeHint">Enter, Km</string>
+    <string name="machHint">Enter</string>
     <string name="resultHint">Result</string>
     <string name="plainText">0</string>
     <string name="velocityTextView">Velocity</string>
@@ -19,21 +20,21 @@
 
     //graph cativity resources
     <string name="graphButton" >Graph mode</string>
-    <string name="graphTextView">Altitude range</string>
+    <string name="graphTextView">Altitude range, Km</string>
     <string name="altitudeRange1">From</string>
     <string name="altitudeRange2">To</string>
 
     //help resources
-    <string name="altitudeHelpString">Enter altitude under the Earth surface in kilometers.</string>
+    <string name="altitudeHelpString">Enter altitude above the Earth surface in kilometers.</string>
     <string name="machHelpString">Enter flight Mach number. This value uses to calculate flow full parameters.
                                   If this value equals zero only static parameters will be displayed.</string>
-    <string name="pressureHelpString">Pressure in Pa </string>
-    <string name="densityHelpString" >Density in kg/m^3 </string>
-    <string name="temperatureHelpString">Temperature in K</string>
-    <string name="fullPressureHelpString">Full pressure of inlet flow in Pa</string>
-    <string name="fullTemperatureHelpString">Full temperature of inlet flow in K</string>
+    <string name="pressureHelpString">Static pressure in Pa. </string>
+    <string name="densityHelpString" >Density in kg/m^3. </string>
+    <string name="temperatureHelpString">Static temperature in K.</string>
+    <string name="fullPressureHelpString">Full pressure of inlet flow in Pa.</string>
+    <string name="fullTemperatureHelpString">Full temperature of inlet flow in K.</string>
     <string name="graphHelpString">Enter altitude range in kilometers for parameters
-        changing. Press OK button to generate graph. If no altitude given program will work with default
+        changing. Press OK button to generate graph. If no altitude was given program will work with default
         altitude range from 0 to 50 kilometers.</string>
 
     //menu resources
@@ -45,12 +46,12 @@
     //About activity resources
     <string name="About">
         This program intended to calculate atmosphere parameters on altitude from 0 to 85 kilometers
-        under the Earth surface. Also it has possibility to evaluate full parameters of inlet flow
+        above the Earth surface. Also it has possibility to evaluate full parameters of inlet flow
         during the flight with given altitude and Mach number.\n\n
 
-        Program by: Batura Stas,\n
-        Science core: Sidorov Rodion,\n
 
     </string>
+    <string name="graphOkbutton">Ok</string>
+    <string name="exit_menu_text">Quit</string>
 
 </resources>

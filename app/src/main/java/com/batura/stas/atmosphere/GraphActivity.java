@@ -127,7 +127,11 @@ public class GraphActivity extends AppCompatActivity{
                 Intent aboutIntent = new Intent(GraphActivity.this,AboutActivity.class);
                 startActivity(aboutIntent);
                 return true;
-
+//            case R.id.menuGraphExit:
+//                Intent closeIntent = new Intent(GraphActivity.this,GraphActivity.class);
+//                closeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                finish();
+//                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

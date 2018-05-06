@@ -25,7 +25,7 @@
             <EditText
                 android:id="@+id/altitudeValue"
                 android:hint="@string/altitudeHint"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 style="@style/input_basic_styleTextView"
                 />
 
@@ -44,8 +44,8 @@
                 style="@style/input_basic_styleTextView" />
             <EditText
                 android:id="@+id/machValue"
-                android:hint="@string/altitudeHint"
-                android:inputType="number"
+                android:hint="@string/machHint"
+                android:inputType="numberDecimal"
                 style="@style/input_basic_styleTextView"/>
             <ImageButton
                 android:id="@+id/machHelp"

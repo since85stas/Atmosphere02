@@ -123,6 +123,11 @@ public class CalculateActivity extends AppCompatActivity {
                 Intent aboutIntent = new Intent(CalculateActivity.this,AboutActivity.class);
                 startActivity(aboutIntent);
                 return true;
+//            case R.id.menuCalculateExit:
+//                Intent closeIntent = new Intent(CalculateActivity.this,CalculateActivity.class);
+//                closeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                finish();
+//                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

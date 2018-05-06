@@ -37,12 +37,15 @@ public class AboutActivity extends AppCompatActivity {
                 Intent graphIntent = new Intent(AboutActivity.this,CalculateActivity.class);
                 startActivity(graphIntent);
                 return true;
-
             case R.id.menuAboutSelectGraph:
                 Intent calcIntent = new Intent(AboutActivity.this,GraphActivity.class);
                 startActivity(calcIntent);
                 return true;
-
+//            case R.id.menuAboutExit:
+//                Intent closeIntent = new Intent(AboutActivity.this,AboutActivity.class);
+//                closeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                finish();
+//                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

@@ -21,7 +21,8 @@
             <RadioButton
                 android:id="@+id/pressureRadioButton"
                 style="@style/radioButtonStyle"
-                android:text="@string/pressureTextView" />
+                android:text="@string/pressureTextView"
+                android:paddingLeft="8dp"/>
 
             <RadioButton
                 android:id="@+id/densityRadioButton"
@@ -31,7 +32,8 @@
             <RadioButton
                 android:id="@+id/temperatureRadioButton"
                 style="@style/radioButtonStyle"
-                android:text="@string/temperatureTextView" />
+                android:text="@string/temperatureTextView"
+                android:paddingRight="8dp"/>
         </RadioGroup>
 
     </LinearLayout>
@@ -41,23 +43,27 @@
         android:baselineAligned="false">
         <TextView
             android:text="@string/graphTextView"
-            style="@style/input_basic_styleTextView"
-            android:layout_width="@dimen/input_item_width"/>
+            style="@style/graph_activity_basic_style"
+            android:layout_width="@dimen/input_item_width"
+            android:layout_gravity="center_vertical"/>
         <EditText
             android:id="@+id/graphEditText1"
             android:hint="@string/altitudeRange1"
             style="@style/input_basic_styleTextView"
-            android:layout_width="@dimen/edit_graphText_width"/>/>
+            android:layout_width="@dimen/edit_graphText_width"
+            android:inputType="numberDecimal"/>
         <EditText
             android:id="@+id/graphEditText2"
             android:hint="@string/altitudeRange2"
             style="@style/input_basic_styleTextView"
-            android:layout_width="@dimen/edit_graphText_width"/>
+            android:layout_width="@dimen/edit_graphText_width"
+            android:inputType="numberDecimal"/>
+
         <Button
             android:id="@+id/graphOkButton"
-            android:text="Ok"
             style="@style/help_icon_style"
-            android:background="@color/colorPrimary"/>
+            android:background="@color/colorPrimary"
+            android:text="@string/graphOkbutton" />
 
         <ImageButton
             android:id="@+id/graphHelp"
