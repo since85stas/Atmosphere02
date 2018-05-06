@@ -17,7 +17,7 @@ import java.text.DecimalFormat;
 public class CalculateActivity extends AppCompatActivity {
 
     private static final String TAG = "CalcClass";
-    public final static String USER = "stasbatura.myapp.USER";
+    public final static String USER = "stas.batura.myapp.USER";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,16 +51,19 @@ public class CalculateActivity extends AppCompatActivity {
                             double pressure = atm.getPressure();
                             double density  = atm.getDensity();
                             double temperature = atm.getTempreture();
+                            double sonicSpeed = atm.getSonicSpeed();
                             if (BuildConfig.DEBUG) {   Log.d(TAG, "atm pres " +pressure+density+temperature);}
                             TextView pressureTextView = findViewById(R.id.pressureValue);
                             TextView densityTextView = findViewById(R.id.densityValue);
                             TextView temperatureTextView = findViewById(R.id.temperatureValue);
+                            TextView sonicSpeedTextView = findViewById(R.id.sonicSpeedValue);
 
 //                            String ss = formatPresssure(pressure);
 
                             pressureTextView.setText(formatPresssure(pressure));
                             densityTextView.setText(formatDens(density));
                             temperatureTextView.setText(formatTemp(temperature));
+                            sonicSpeedTextView.setText(formatSonic(sonicSpeed));
                         }
                     }
                 }
@@ -165,6 +168,10 @@ public class CalculateActivity extends AppCompatActivity {
                 helpIntent.putExtra("helpResources",R.string.fullTemperatureHelpString);
                 startActivity(helpIntent);
                 break;
+            case (R.id.sonicSpeedHelp)  :
+                helpIntent.putExtra("helpResources",R.string.fullTemperatureHelpString);
+                startActivity(helpIntent);
+                break;
 
         }
     }
@@ -182,6 +189,11 @@ public class CalculateActivity extends AppCompatActivity {
     private String formatDens (double dens) {
         DecimalFormat magnitudeFormat = new DecimalFormat("0.0000000");
         return magnitudeFormat.format(dens);
+    }
+
+    private String formatSonic (double temp) {
+        DecimalFormat magnitudeFormat = new DecimalFormat("000.00000");
+        return magnitudeFormat.format(temp);
     }
 
 

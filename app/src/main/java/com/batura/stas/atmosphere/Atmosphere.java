@@ -14,7 +14,15 @@ public class Atmosphere  {
     private double mDensity;
     private double mFullPressure;
     private double mFullTempreture;
+
+
+
+    private double mSonicSpeed;
     private static final String TAG = "AtmosphereClass";
+
+    final double rGc = 8.3144598;
+    final double mu  = 28.98e-03;
+    final double dT  = 0.5 ;
  //
 
 
@@ -43,14 +51,16 @@ public class Atmosphere  {
         mTempreture = tempretureZones[i] +bParamZones[i+1]*(heightG-heightG0);
         mPressure = pressureZones[i] * Math.exp(-gravity*(heightG-heightG0)/airConst/tempretureZones[i]);
         mDensity  = mPressure/airConst/mTempreture;
+        double cp1 = findCp(mTempreture);
+        double kappa = cp1/(cp1-rGc/mu);
+        double voiceVelocity = Math.sqrt(kappa*mPressure/mDensity);
+        mSonicSpeed = voiceVelocity;
 
     }
 
     public Atmosphere (double heightKm, double machNumber) {
 
-        final double rGc = 8.3144598;
-        final double mu  = 28.98e-03;
-        final double dT  = 0.5 ;
+
 
         //double height = heightKm*1000; // caclculating to meters
 
@@ -147,4 +157,6 @@ public class Atmosphere  {
     public double getFullTempreture() {
         return mFullTempreture;
     }
+
+    public double getSonicSpeed() { return mSonicSpeed; }
 }
