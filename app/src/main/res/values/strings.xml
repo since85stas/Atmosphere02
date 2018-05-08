@@ -50,6 +50,9 @@
         above the Earth surface. Also it has possibility to evaluate full parameters of inlet flow
         during the flight with given altitude and Mach number.\n\n
 
+        Program:        Batura Stas
+        Science core:   Sidorov Rodion
+
 
     </string>
     <string name="graphOkbutton">Ok</string>

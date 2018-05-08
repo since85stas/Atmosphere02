@@ -32,8 +32,8 @@ public class Atmosphere  {
     public Atmosphere (double heightKm){
 
         /* Defining parametres of earth atmosphere*/
-        final double gravity = 9.807;
-        final double airConst = 287;
+        final double gravity = 9.80665;
+        final double airConst = 287.05287;
         final double radiusPlanet = 6356767;
         double heightZones [] = {0,11019,20063,32162,47350,51412,71802,86152};
         double pressureZones [] = {101325,22632,5474.9,858.01,110.91,66.938,3.9564,0.37338};
@@ -49,7 +49,13 @@ public class Atmosphere  {
         double heightG = radiusPlanet*height/(radiusPlanet+height);
 
         mTempreture = tempretureZones[i] +bParamZones[i+1]*(heightG-heightG0);
-        mPressure = pressureZones[i] * Math.exp(-gravity*(heightG-heightG0)/airConst/tempretureZones[i]);
+        if (Math.abs( bParamZones[i+1])  < 1e-05) {
+            mPressure = pressureZones[i] * Math.exp(-gravity * (heightG - heightG0) / airConst / tempretureZones[i]);
+        }
+        else {
+            mPressure = pressureZones[i]*Math.pow( 1+bParamZones[i+1]/tempretureZones[i]*(heightG - heightG0),-gravity/bParamZones[i+1]/airConst);
+        }
+
         mDensity  = mPressure/airConst/mTempreture;
         double cp1 = findCp(mTempreture);
         double kappa = cp1/(cp1-rGc/mu);
