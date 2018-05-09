@@ -71,4 +71,9 @@
         <item name="android:layout_height">@dimen/input_item_height</item>
     </style>
 
+    <style name="myRatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@android:color/holo_green_dark</item>
+        <item name="colorControlActivated">@android:color/holo_orange_dark</item>
+    </style>
+
 </resources>

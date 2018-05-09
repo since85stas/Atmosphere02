@@ -28,6 +28,7 @@
         android:textSize="16sp" />
 
     <RatingBar
+        style="@style/myRatingBar"
         android:layout_alignParentBottom="true"
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
@@ -38,9 +39,8 @@
         android:clickable="true"
         android:isIndicator="false"
         android:numStars="5"
-        android:rating="3"
+        android:rating="4"
         android:stepSize="0.5"
-        android:layout_centerHorizontal="true"
-        />
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

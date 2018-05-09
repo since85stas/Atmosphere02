@@ -101,6 +101,10 @@ public class CalculateActivity extends AppCompatActivity {
                         TextView fullTemperatureTextView = findViewById(R.id.fullTempValue);
                         double fullTemp = atmFull.getFullTempreture();
                         fullTemperatureTextView.setText(formatPresssure(fullTemp));
+
+                        TextView dynamicPressTextView = findViewById(R.id.dynamicPressValue);
+                        double dynamicPress = density * (machValue*sonicSpeed)*(machValue*sonicSpeed);
+                        dynamicPressTextView.setText(formatPresssure(dynamicPress));
                     }
                 }
             }
@@ -173,6 +177,10 @@ public class CalculateActivity extends AppCompatActivity {
                 break;
             case (R.id.sonicSpeedHelp)  :
                 helpIntent.putExtra("helpResources",R.string.fullTemperatureHelpString);
+                startActivity(helpIntent);
+                break;
+            case (R.id.dynamicPressHelp)  :
+                helpIntent.putExtra("helpResources",R.string.dynamicPressHelp);
                 startActivity(helpIntent);
                 break;
 

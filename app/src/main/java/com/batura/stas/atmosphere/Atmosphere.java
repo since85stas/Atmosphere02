@@ -15,6 +15,7 @@ public class Atmosphere  {
     private double mFullPressure;
     private double mFullTempreture;
     private double mSonicSpeed;
+    private double mDynamicPressure;
 
     private static final String TAG = "AtmosphereClass";
 
@@ -163,4 +164,6 @@ public class Atmosphere  {
     }
 
     public double getSonicSpeed() { return mSonicSpeed; }
+
+    public double getmDynamicPressure() {return mDynamicPressure; }
 }

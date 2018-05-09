@@ -195,5 +195,22 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="@android:color/darker_gray"/>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+        <TextView
+            android:text="@string/dynamicPressTextView"
+            style="@style/output_basic_styleTextView" />
+        <TextView
+            android:id="@+id/dynamicPressValue"
+            android:hint="@string/resultHint"
+            style="@style/output_basic_styleTextView"/>
+        <ImageButton
+            android:id="@+id/dynamicPressHelp"
+            style="@style/help_icon_style"
+            android:onClick="calculateHelpOnClick"/>
+    </LinearLayout>
 
 </LinearLayout>
