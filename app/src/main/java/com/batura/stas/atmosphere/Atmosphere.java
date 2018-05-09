@@ -14,10 +14,8 @@ public class Atmosphere  {
     private double mDensity;
     private double mFullPressure;
     private double mFullTempreture;
-
-
-
     private double mSonicSpeed;
+
     private static final String TAG = "AtmosphereClass";
 
     final double rGc = 8.3144598;

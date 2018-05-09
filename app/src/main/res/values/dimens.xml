@@ -3,7 +3,7 @@
     
     <resources>
         <dimen name="input_item_height">50dp</dimen>
-        <dimen name="input_item_width">100dp</dimen>
+        <dimen name="input_item_width">150dp</dimen>
         <dimen name="edit_graphText_width">50dp</dimen>
         <dimen name="output_item_height">48dp</dimen>
         <dimen name="activityPaddingLateral">16dp</dimen>

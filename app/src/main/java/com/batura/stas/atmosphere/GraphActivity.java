@@ -95,6 +95,7 @@ public class GraphActivity extends AppCompatActivity{
 
                 LineGraphSeries <DataPoint> series = new LineGraphSeries<>(data(leftEdge,rightEdge,currentCase) );
                 testGraph.addSeries(series);
+                testGraph.getRootView();
 
                 testGraph.getViewport().setScalable(true);
                 testGraph.getViewport().setScalableY(true);

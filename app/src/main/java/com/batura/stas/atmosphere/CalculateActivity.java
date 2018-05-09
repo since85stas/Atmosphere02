@@ -81,14 +81,17 @@ public class CalculateActivity extends AppCompatActivity {
                         double pressure = atm.getPressure();
                         double density  = atm.getDensity();
                         double temperature = atm.getTempreture();
+                        double sonicSpeed = atm.getSonicSpeed();
                         if (BuildConfig.DEBUG) {   Log.d(TAG, "atm pres " +pressure+density+temperature);}
                         TextView pressureTextView = findViewById(R.id.pressureValue);
                         TextView densityTextView = findViewById(R.id.densityValue);
                         TextView temperatureTextView = findViewById(R.id.temperatureValue);
+                        TextView sonicSpeedTextView = findViewById(R.id.sonicSpeedValue);
 
                         pressureTextView.setText(formatPresssure(pressure));
                         densityTextView.setText(formatDens(density));
                         temperatureTextView.setText(formatTemp(temperature));
+                        sonicSpeedTextView.setText(formatSonic(sonicSpeed));
 
                         Atmosphere atmFull = new Atmosphere(altitudeValue,machValue);
                         double fullPressure = atmFull.getFullPressure();

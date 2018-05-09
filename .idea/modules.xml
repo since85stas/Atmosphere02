@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Atmosphere.iml" filepath="$PROJECT_DIR$/Atmosphere.iml" />
       <module fileurl="file://D:\Android\AtmosphereW10\Atmosphere.iml" filepath="D:\Android\AtmosphereW10\Atmosphere.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/AtmosphereW10.iml" filepath="$PROJECT_DIR$/.idea/AtmosphereW10.iml" />
+      <module fileurl="file://D:\Android\Atmosphere\.idea\AtmosphereW10.iml" filepath="D:\Android\Atmosphere\.idea\AtmosphereW10.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
