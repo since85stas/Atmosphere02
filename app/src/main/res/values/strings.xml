@@ -27,7 +27,7 @@
 
     //help resources
     <string name="altitudeHelpString">Enter altitude above the Earth surface in kilometers.</string>
-    <string name="machHelpString">Enter flight Mach number. This value uses to calculate flow full parameters.
+    <string name="machHelpString">Enter flight Mach number or velocity in m/s. This values use to calculate inlet flow full parameters.
                                   If this value equals zero only static parameters will be displayed.</string>
     <string name="pressureHelpString">Static pressure in Pa. </string>
     <string name="densityHelpString" >Density in kg/m^3. </string>
@@ -59,5 +59,7 @@
     <string name="exit_menu_text">Quit</string>
     <string name="sonicSpeedTextView">Sonic speed</string>
     <string name="ratingTextView">Thx for rating us!</string>
+    <string name="ratingButtn">Rate</string>
+    <string name="velocitySpinner">Velocity, m/s</string>
 
 </resources>

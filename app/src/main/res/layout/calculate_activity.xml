@@ -21,6 +21,7 @@
             <TextView
                 android:text="@string/altitudeTextView"
                 style="@style/input_basic_styleTextView"
+                android:layout_marginLeft="8dp"
                 />
             <EditText
                 android:id="@+id/altitudeValue"
@@ -39,7 +40,9 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:baselineAligned="false">
-            <TextView
+            <Spinner
+                android:id="@+id/machSpinner"
+                android:spinnerMode="dropdown"
                 android:text="@string/machTextView"
                 style="@style/input_basic_styleTextView" />
             <EditText
@@ -115,6 +118,28 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:baselineAligned="false">
+
+        <TextView
+            style="@style/output_basic_styleTextView"
+            android:text="@string/sonicSpeedTextView" />
+        <TextView
+            android:id="@+id/sonicSpeedValue"
+            android:hint="@string/resultHint"
+            style="@style/output_basic_styleTextView"/>
+        <ImageButton
+            android:id="@+id/sonicSpeedHelp"
+            style="@style/help_icon_style"
+            android:onClick="calculateHelpOnClick"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@android:color/darker_gray"/>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
         <TextView
             android:text="@string/densityTextView"
             style="@style/output_basic_styleTextView" />
@@ -136,19 +161,20 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:baselineAligned="false">
-
         <TextView
-            style="@style/output_basic_styleTextView"
-            android:text="@string/sonicSpeedTextView" />
+            android:id="@+id/velocityTitle"
+            android:text="@string/velocityTextView"
+            style="@style/output_basic_styleTextView" />
         <TextView
-            android:id="@+id/sonicSpeedValue"
+            android:id="@+id/velociryValue"
             android:hint="@string/resultHint"
             style="@style/output_basic_styleTextView"/>
         <ImageButton
-            android:id="@+id/sonicSpeedHelp"
+            android:id="@+id/velocityHelp"
             style="@style/help_icon_style"
             android:onClick="calculateHelpOnClick"/>
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
@@ -212,5 +238,7 @@
             style="@style/help_icon_style"
             android:onClick="calculateHelpOnClick"/>
     </LinearLayout>
+
+
 
 </LinearLayout>

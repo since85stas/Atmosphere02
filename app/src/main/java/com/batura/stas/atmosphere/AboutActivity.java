@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RatingBar;
 
 /**
@@ -23,7 +24,8 @@ public class AboutActivity extends AppCompatActivity {
         setContentView(R.layout.about_activity);
 
         RatingBar ratingBar =(RatingBar) findViewById(R.id.ratingBar);
-        ratingBar.setOnClickListener(new View.OnClickListener() {
+        Button    rateButton = findViewById(R.id.button);
+        rateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);

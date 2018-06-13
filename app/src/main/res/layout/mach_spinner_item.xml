@@ -1,0 +1,7 @@
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mach_spiner_item_idr_item"
+    style="@style/input_basic_styleTextView"
+    android:layout_width="wrap_content"
+    android:singleLine="true"
+    android:ellipsize="marquee"
+    />

@@ -1,28 +1,46 @@
 package com.batura.stas.atmosphere;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
+
+import static android.R.layout.simple_spinner_item;
+import static com.batura.stas.atmosphere.R.layout.support_simple_spinner_dropdown_item;
 
 public class CalculateActivity extends AppCompatActivity {
 
     private static final String TAG = "CalcClass";
     public final static String USER = "stas.batura.myapp.USER";
 
+    int mMachSpinnerMode = MACH_MODE;
+
+    private TextView velocityTextView;
+
+    private static final int MACH_MODE = 0;
+    private static final int VEL_MODE = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calculate_activity);
+
+        velocityTextView = findViewById(R.id.velocityTitle);
+        setupMachSpinner();
 
         Button calculateButton = findViewById(R.id.calculateButtonIn);
         calculateButton.setOnClickListener(new View.OnClickListener() {
@@ -82,6 +100,7 @@ public class CalculateActivity extends AppCompatActivity {
                         double density  = atm.getDensity();
                         double temperature = atm.getTempreture();
                         double sonicSpeed = atm.getSonicSpeed();
+
                         if (BuildConfig.DEBUG) {   Log.d(TAG, "atm pres " +pressure+density+temperature);}
                         TextView pressureTextView = findViewById(R.id.pressureValue);
                         TextView densityTextView = findViewById(R.id.densityValue);
@@ -94,13 +113,18 @@ public class CalculateActivity extends AppCompatActivity {
                         sonicSpeedTextView.setText(formatSonic(sonicSpeed));
 
                         Atmosphere atmFull = new Atmosphere(altitudeValue,machValue);
+
+                        double velocity = atmFull.getmVelocity();
+
+                        velocityTextView.setText(formatTemp(velocity));
+
                         double fullPressure = atmFull.getFullPressure();
                         TextView fullPressureTextView = findViewById(R.id.fullPressureValue);
                         fullPressureTextView.setText(formatPresssure(fullPressure));
 
                         TextView fullTemperatureTextView = findViewById(R.id.fullTempValue);
                         double fullTemp = atmFull.getFullTempreture();
-                        fullTemperatureTextView.setText(formatPresssure(fullTemp));
+                        fullTemperatureTextView.setText(formatTemp(fullTemp));
 
                         TextView dynamicPressTextView = findViewById(R.id.dynamicPressValue);
                         double dynamicPress = density * (machValue*sonicSpeed)*(machValue*sonicSpeed);
@@ -109,6 +133,42 @@ public class CalculateActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void setupMachSpinner() {
+
+       Spinner machSpinner = findViewById(R.id.machSpinner);
+       ArrayAdapter machAdapter = ArrayAdapter.createFromResource( this, R.array.mach_options,R.layout.mach_spinner_item );
+       machAdapter.setDropDownViewResource(R.layout.mach_spinner_item);
+       machSpinner.setAdapter(machAdapter);
+       machSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+           @Override
+           public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
+               String selection = (String) parent.getItemAtPosition(position);
+               if (!TextUtils.isEmpty(selection)) {
+                   if (selection.equals(getString(R.string.machTextView))) {
+                       mMachSpinnerMode = MACH_MODE;
+                       //mGender = PetContract.PetEntry.GENDER_MALE; // Male
+                   } else if (selection.equals(getString(R.string.velocitySpinner))) {
+                       mMachSpinnerMode = VEL_MODE;
+                       //mGender = PetContract.PetEntry.GENDER_FEMALE; // Female
+                   }
+                   if (mMachSpinnerMode == VEL_MODE) {
+                       velocityTextView.setText(R.string.machTextView);
+                   }
+                   if (mMachSpinnerMode == MACH_MODE) {
+                       velocityTextView.setText(R.string.velocityTextView);
+                   }
+               }
+           }
+
+           @Override
+           public void onNothingSelected(AdapterView<?> parent) {
+               mMachSpinnerMode = MACH_MODE;
+           }
+
+       });
+
     }
 
     @Override

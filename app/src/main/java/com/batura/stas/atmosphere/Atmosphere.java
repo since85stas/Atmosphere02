@@ -15,6 +15,10 @@ public class Atmosphere  {
     private double mFullPressure;
     private double mFullTempreture;
     private double mSonicSpeed;
+
+
+
+    private double mVelocity;
     private double mDynamicPressure;
 
     private static final String TAG = "AtmosphereClass";
@@ -92,6 +96,7 @@ public class Atmosphere  {
             cp1 = cp2;
         }
         mFullPressure = atm1.getPressure()*Math.exp(mu/rGc*dsSum);
+        mVelocity = velocity;
     }
 
     private double findCp (double temp) {
@@ -166,4 +171,7 @@ public class Atmosphere  {
     public double getSonicSpeed() { return mSonicSpeed; }
 
     public double getmDynamicPressure() {return mDynamicPressure; }
+
+    public double getmVelocity() {     return mVelocity;
+    }
 }
