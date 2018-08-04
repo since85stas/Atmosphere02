@@ -1,7 +1,9 @@
 package com.batura.stas.atmosphere;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -24,25 +26,54 @@ import static com.batura.stas.atmosphere.R.layout.support_simple_spinner_dropdow
 
 public class CalculateActivity extends AppCompatActivity {
 
-    private static final String TAG = "CalcClass";
-    public final static String USER = "stas.batura.myapp.USER";
-
-    int mMachSpinnerMode = MACH_MODE;
-
-    private TextView velocityTextView;
+    private static final String TAG = CalculateActivity.class.toString();
 
     private static final int MACH_MODE = 0;
     private static final int VEL_MODE = 1;
 
+    // это будут ключи файла настроек
+    private static final String APP_PREFERENCES = "mysettings";
+    public static final String VELOCITY_SPINNER_MODE = "Mode"; // положение переключателя
+    public static final String NUMBER_OF_OPENS = "Opens"; // количество запусков приложения
+    public static final String IS_RATED = "Rated" ;       // прошли ли по ссылке в маркет
+    public static final int  numberOfOpensDel = 10;
+    public int mNumberOfOpens ;
+    public int mRated ;
+    SharedPreferences mSettings;
+
+    int mMachSpinnerMode = MACH_MODE;
+    private Atmosphere atm;
+
+    private TextView velocityTextView;
+
+    private void loadPreferences() {
+        mMachSpinnerMode = mSettings.getInt(VELOCITY_SPINNER_MODE,MACH_MODE);
+        mNumberOfOpens   = mSettings.getInt(NUMBER_OF_OPENS,1);
+        mRated           = mSettings.getInt(IS_RATED,0);
+    }
+
+    private void savePreferences() {
+        SharedPreferences.Editor editor = mSettings.edit();
+        editor.putInt(VELOCITY_SPINNER_MODE, mMachSpinnerMode);
+        editor.putInt(NUMBER_OF_OPENS, mNumberOfOpens);
+        editor.putInt(IS_RATED, mRated);
+        editor.apply();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        loadPreferences();
+
         setContentView(R.layout.calculate_activity);
 
         velocityTextView = findViewById(R.id.velocityTitle);
         setupMachSpinner();
 
         Button calculateButton = findViewById(R.id.calculateButtonIn);
+
+        //Atmosphere atm;
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,15 +88,15 @@ public class CalculateActivity extends AppCompatActivity {
                         String altitudeStr = altitudeValueText.getText().toString();
                         double altitudeValue = Double.parseDouble(altitudeStr);
                         if (altitudeValue < 0) {
-                            Toast toast01 = Toast.makeText(getApplicationContext(),"Wrong altitiude value",Toast.LENGTH_SHORT);
+                            Toast toast01 = Toast.makeText(getApplicationContext(),R.string.negat_altitude,Toast.LENGTH_SHORT);
                             toast01.show();
                         }
                         if (altitudeValue > 85) {
-                            Toast toast01 = Toast.makeText(getApplicationContext(),"Maximum altitude exceeding",Toast.LENGTH_SHORT);
+                            Toast toast01 = Toast.makeText(getApplicationContext(),R.string.high_altitude,Toast.LENGTH_SHORT);
                             toast01.show();
                         }
                         else{
-                            Atmosphere atm = new Atmosphere(altitudeValue);
+                            atm = new Atmosphere(altitudeValue);
                             double pressure = atm.getPressure();
                             double density  = atm.getDensity();
                             double temperature = atm.getTempreture();
@@ -84,51 +115,75 @@ public class CalculateActivity extends AppCompatActivity {
                             sonicSpeedTextView.setText(formatSonic(sonicSpeed));
                         }
                     }
-                }
-                else {
-                    String machStr = machValueText.getText().toString();
-                    double machValue = Double.parseDouble(machStr);
+                }  else {
                     String altitudeStr = altitudeValueText.getText().toString();
                     double altitudeValue = Double.parseDouble(altitudeStr);
-                    if(machValue < 0) {
-                        Toast toast01 = Toast.makeText(getApplicationContext(),"Wrong Mach number value",Toast.LENGTH_SHORT);
+                    if (altitudeValue < 0) {
+                        Toast toast01 = Toast.makeText(getApplicationContext(), R.string.negat_altitude, Toast.LENGTH_SHORT);
                         toast01.show();
-                    }
-                    else{
-                        Atmosphere atm = new Atmosphere(altitudeValue);
-                        double pressure = atm.getPressure();
-                        double density  = atm.getDensity();
-                        double temperature = atm.getTempreture();
-                        double sonicSpeed = atm.getSonicSpeed();
+                    } else if (altitudeValue > 85) {
+                        Toast toast01 = Toast.makeText(getApplicationContext(), R.string.high_altitude, Toast.LENGTH_SHORT);
+                        toast01.show();
+                    } else {
+                        atm = new Atmosphere(altitudeValue);
+                        double machValue = -1;
+                        if (mMachSpinnerMode == MACH_MODE) {
+                            String machStr = machValueText.getText().toString();
+                            machValue = Double.parseDouble(machStr);
+                        } else if (mMachSpinnerMode == VEL_MODE) {
+                            String velStr = machValueText.getText().toString();
+                            double velValue = Double.parseDouble(velStr);
+                            machValue = velValue / atm.getSonicSpeed();
+                        }
+                        if (machValue < 0) {
+                            Toast toast01 = Toast.makeText(getApplicationContext(), R.string.negative_mach, Toast.LENGTH_SHORT);
+                            toast01.show();
+                        } else if (machValue > 21) {
+                            Toast toast01 = Toast.makeText(getApplicationContext(), R.string.high_mach, Toast.LENGTH_SHORT);
+                            toast01.show();
+                        } else {
+                            atm = new Atmosphere(altitudeValue);
+                            double pressure = atm.getPressure();
+                            double density = atm.getDensity();
+                            double temperature = atm.getTempreture();
+                            double sonicSpeed = atm.getSonicSpeed();
 
-                        if (BuildConfig.DEBUG) {   Log.d(TAG, "atm pres " +pressure+density+temperature);}
-                        TextView pressureTextView = findViewById(R.id.pressureValue);
-                        TextView densityTextView = findViewById(R.id.densityValue);
-                        TextView temperatureTextView = findViewById(R.id.temperatureValue);
-                        TextView sonicSpeedTextView = findViewById(R.id.sonicSpeedValue);
+                            if (BuildConfig.DEBUG) {
+                                Log.d(TAG, "atm pres " + pressure + density + temperature);
+                            }
+                            TextView pressureTextView = findViewById(R.id.pressureValue);
+                            TextView densityTextView = findViewById(R.id.densityValue);
+                            TextView temperatureTextView = findViewById(R.id.temperatureValue);
+                            TextView sonicSpeedTextView = findViewById(R.id.sonicSpeedValue);
 
-                        pressureTextView.setText(formatPresssure(pressure));
-                        densityTextView.setText(formatDens(density));
-                        temperatureTextView.setText(formatTemp(temperature));
-                        sonicSpeedTextView.setText(formatSonic(sonicSpeed));
+                            pressureTextView.setText(formatPresssure(pressure));
+                            densityTextView.setText(formatDens(density));
+                            temperatureTextView.setText(formatTemp(temperature));
+                            sonicSpeedTextView.setText(formatSonic(sonicSpeed));
 
-                        Atmosphere atmFull = new Atmosphere(altitudeValue,machValue);
+                            Atmosphere atmFull = new Atmosphere(altitudeValue, machValue);
 
-                        double velocity = atmFull.getmVelocity();
+                            TextView velocityValueText = findViewById(R.id.velociryValue);
+                            if (mMachSpinnerMode == MACH_MODE) {
+                                double velocity = atmFull.getmVelocity();
+                                velocityValueText.setText(formatTemp(velocity));
+                            }
+                            if (mMachSpinnerMode == VEL_MODE) {
+                                velocityValueText.setText(formatDens(machValue));
+                            }
 
-                        velocityTextView.setText(formatTemp(velocity));
+                            double fullPressure = atmFull.getFullPressure();
+                            TextView fullPressureTextView = findViewById(R.id.fullPressureValue);
+                            fullPressureTextView.setText(formatPresssure(fullPressure));
 
-                        double fullPressure = atmFull.getFullPressure();
-                        TextView fullPressureTextView = findViewById(R.id.fullPressureValue);
-                        fullPressureTextView.setText(formatPresssure(fullPressure));
+                            TextView fullTemperatureTextView = findViewById(R.id.fullTempValue);
+                            double fullTemp = atmFull.getFullTempreture();
+                            fullTemperatureTextView.setText(formatTemp(fullTemp));
 
-                        TextView fullTemperatureTextView = findViewById(R.id.fullTempValue);
-                        double fullTemp = atmFull.getFullTempreture();
-                        fullTemperatureTextView.setText(formatTemp(fullTemp));
-
-                        TextView dynamicPressTextView = findViewById(R.id.dynamicPressValue);
-                        double dynamicPress = density * (machValue*sonicSpeed)*(machValue*sonicSpeed);
-                        dynamicPressTextView.setText(formatPresssure(dynamicPress));
+                            TextView dynamicPressTextView = findViewById(R.id.dynamicPressValue);
+                            double dynamicPress = density * (machValue * sonicSpeed) * (machValue * sonicSpeed);
+                            dynamicPressTextView.setText(formatPresssure(dynamicPress));
+                        }
                     }
                 }
             }
@@ -136,11 +191,11 @@ public class CalculateActivity extends AppCompatActivity {
     }
 
     private void setupMachSpinner() {
-
        Spinner machSpinner = findViewById(R.id.machSpinner);
        ArrayAdapter machAdapter = ArrayAdapter.createFromResource( this, R.array.mach_options,R.layout.mach_spinner_item );
        machAdapter.setDropDownViewResource(R.layout.mach_spinner_item);
        machSpinner.setAdapter(machAdapter);
+       machSpinner.setSelection(mMachSpinnerMode);
        machSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
            @Override
            public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
@@ -164,7 +219,7 @@ public class CalculateActivity extends AppCompatActivity {
 
            @Override
            public void onNothingSelected(AdapterView<?> parent) {
-               mMachSpinnerMode = MACH_MODE;
+               //mMachSpinnerMode = MACH_MODE;
            }
 
        });
@@ -243,8 +298,25 @@ public class CalculateActivity extends AppCompatActivity {
                 helpIntent.putExtra("helpResources",R.string.dynamicPressHelp);
                 startActivity(helpIntent);
                 break;
+            case (R.id.velocityHelp)  :
+                helpIntent.putExtra("helpResources",R.string.velocityHelpString);
+                startActivity(helpIntent);
+                break;
 
         }
+    }
+
+    @Override
+    protected void onPause() {
+        savePreferences();
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        mNumberOfOpens++;  // после закрытия кол запусков увел на 1
+        savePreferences();
+        super.onStop();
     }
 
     private String formatPresssure (double press) {
