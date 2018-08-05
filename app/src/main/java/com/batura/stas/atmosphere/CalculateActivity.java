@@ -1,9 +1,11 @@
 package com.batura.stas.atmosphere;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -21,9 +23,6 @@ import android.widget.Toast;
 
 import java.text.DecimalFormat;
 
-import static android.R.layout.simple_spinner_item;
-import static com.batura.stas.atmosphere.R.layout.support_simple_spinner_dropdown_item;
-
 public class CalculateActivity extends AppCompatActivity {
 
     private static final String TAG = CalculateActivity.class.toString();
@@ -36,7 +35,7 @@ public class CalculateActivity extends AppCompatActivity {
     public static final String VELOCITY_SPINNER_MODE = "Mode"; // положение переключателя
     public static final String NUMBER_OF_OPENS = "Opens"; // количество запусков приложения
     public static final String IS_RATED = "Rated" ;       // прошли ли по ссылке в маркет
-    public static final int  numberOfOpensDel = 10;
+    public static final int  NUMBER_NUM = 10;
     public int mNumberOfOpens ;
     public int mRated ;
     SharedPreferences mSettings;
@@ -67,6 +66,14 @@ public class CalculateActivity extends AppCompatActivity {
         loadPreferences();
 
         setContentView(R.layout.calculate_activity);
+
+        if (mNumberOfOpens%NUMBER_NUM==0 && mRated!=1) {
+            MyDialogFragment myDialogFragment = new MyDialogFragment();
+            FragmentManager manager = getSupportFragmentManager();
+            FragmentTransaction transaction = manager.beginTransaction();
+            myDialogFragment.show(transaction,"Dialog");
+
+        }
 
         velocityTextView = findViewById(R.id.velocityTitle);
         setupMachSpinner();
@@ -106,9 +113,6 @@ public class CalculateActivity extends AppCompatActivity {
                             TextView densityTextView = findViewById(R.id.densityValue);
                             TextView temperatureTextView = findViewById(R.id.temperatureValue);
                             TextView sonicSpeedTextView = findViewById(R.id.sonicSpeedValue);
-
-//                            String ss = formatPresssure(pressure);
-
                             pressureTextView.setText(formatPresssure(pressure));
                             densityTextView.setText(formatDens(density));
                             temperatureTextView.setText(formatTemp(temperature));
@@ -181,7 +185,7 @@ public class CalculateActivity extends AppCompatActivity {
                             fullTemperatureTextView.setText(formatTemp(fullTemp));
 
                             TextView dynamicPressTextView = findViewById(R.id.dynamicPressValue);
-                            double dynamicPress = density * (machValue * sonicSpeed) * (machValue * sonicSpeed);
+                            double dynamicPress = density * (machValue * sonicSpeed) * (machValue * sonicSpeed)/2;
                             dynamicPressTextView.setText(formatPresssure(dynamicPress));
                         }
                     }
@@ -340,6 +344,15 @@ public class CalculateActivity extends AppCompatActivity {
     }
 
 
+    public void cancelClicked() {
+    }
+
+    public void okClicked() {
+        mRated = 1; //если прошли по ссылке то болье диалог не вылезает
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("market://details?id=com.batura.stas.atmosphere"));
+        startActivity(intent);
+    }
 }
 
 

@@ -1,0 +1,71 @@
+<resources>
+    <string name="app_name" >Стандартная атмосфера</string>
+    <string name="calculate">Рассчитать </string>
+    <string name="Description">О приложении</string>
+    <string name="calcAltitudeActivName01">Входные параметры</string>
+    <string name="calcAltitudeActivName02">Выходные параметры</string>
+    <string name="altitudeTextView">Высота, Км</string>
+    <string name="machTextView">Число Маха</string>
+    <string name="pressureTextView">Давление</string>
+    <string name="fullPressureTextView">Полное давление</string>
+    <string name="fullTempTextView">Полная температура</string>
+    <string name="dynamicPressTextView">Скоростной напор</string>
+    <string name="temperatureTextView">Температура</string>
+    <string name="densityTextView">Плотность</string>
+    <string name="altitudeHint">Введите высоту, Км</string>
+    <string name="machHint">Введите</string>
+    <string name="resultHint">Результат</string>
+    <string name="plainText">0</string>
+    <string name="velocityTextView">Скорость</string>
+    <string name="helpTag">О параметре</string>
+
+    //graph activity resources
+    <string name="graphButton" >Графический режим</string>
+    <string name="graphTextView">Диапазон высот, Км</string>
+    <string name="altitudeRange1">От</string>
+    <string name="altitudeRange2">До</string>
+
+    //help resources
+    <string name="altitudeHelpString">Введите высоту над уровнем земли в километрах</string>
+    <string name="machHelpString">Введите полетное число Маха. Это значение используется для вычисления полных параметров потока.
+                                  Если число Маха равно 0 или не введено, то будут представлены только статические параметры.
+                                    Максимальное возможное число Маха равно 21, так как при таких больших скоростях воздух сильно нагревается,
+                                    и для нахождения параметров такого потока необходимо использовать более сложные модели.
+        .</string>
+    <string name="pressureHelpString">Статическое давление воздуха в Па. </string>
+    <string name="densityHelpString" >Плотность воздуха kg/m^3. </string>
+    <string name="temperatureHelpString">Статическая температура воздуха в К.</string>
+    <string name="fullPressureHelpString">Полное давление набегающего потока. Введите число Маха или скорость для расчета этого параметра. </string>
+    <string name="fullTemperatureHelpString">Полная температура набегающего потока. Введите число Маха или скорость для расчета этого параметра.</string>
+    <string name="sonicSpeedHelpString">Скорость звука в воздухе на данной высоте в м/c.</string>
+    <string name="velocityHelpString">Скорость или число Маха </string>
+    <string name="dynamicPressHelp">Скоростной напор набегающего потока. Введите число Маха или скорость для расчета этого параметра.</string>
+    <string name="graphHelpString">Введите диапазон высот в Км. Нажмите Ок для построения графика. Если диапазон не будет введен, то программа будет рабоать с высотой от 0 до 50 Км.</string>
+
+    //menu resources
+    <string name="menuTitle">Выберите режим</string>
+    <string name="menuCalculate">Обычные режим</string>
+    <string name="menuGraph">Графический режим</string>
+    <string name="menuAbout">О программе</string>
+
+    //About activity resources
+    <string name="About">
+        This program intended to calculate atmosphere parameters on altitude from 0 to 85 kilometers
+        above the Earth surface. Also it has possibility to evaluate full parameters of inlet flow
+        during the flight with given altitude and Mach number.\n\n
+        Program:         Batura Stas\n
+        Science core:    Sidorov Rodion\n
+    </string>
+
+    <string name="graphOkbutton">Ок</string>
+    <string name="exit_menu_text">Выход</string>
+    <string name="sonicSpeedTextView">Скорость звука</string>
+    <string name="ratingTextView">Спасибо что оставили отзыв!</string>
+    <string name="ratingButtn">Оценить</string>
+    <string name="velocitySpinner">Скорость, м/с</string>
+    <string name="negative_mach">Wrong Mach number value</string>
+    <string name="high_mach">Too high Mach number value</string>
+    <string name="negat_altitude">Wrong altitiude value</string>
+    <string name="high_altitude">Maximum altitude exceeding</string>
+
+</resources>
